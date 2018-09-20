@@ -76,7 +76,6 @@ public class Profile extends AppCompatActivity {
         profilename = (TextView) findViewById(R.id.profile_name);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         profileemail = (TextView) findViewById(R.id.profile_email);
-        profilephone = (TextView) findViewById(R.id.profile_phone);
         mAuth = FirebaseAuth.getInstance();
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {

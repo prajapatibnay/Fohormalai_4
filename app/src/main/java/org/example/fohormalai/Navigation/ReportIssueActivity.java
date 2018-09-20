@@ -1,26 +1,22 @@
 package org.example.fohormalai.Navigation;
 
 import android.content.Intent;
-
 import android.net.Uri;
-
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import org.example.fohormalai.R;
+import android.widget.TextView;
 
+import org.example.fohormalai.Login;
+import org.example.fohormalai.R;
+import org.example.fohormalai.Registration;
 
 public class ReportIssueActivity extends AppCompatActivity {
 
-    private static final String TAG = "ReportIssueActivity";
-
-
-    private Button report;
-
+    private TextView et_attach, et_capture;
+    private static int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,24 +27,30 @@ public class ReportIssueActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Report Waste Issues !");
 
-
-        Log.i(TAG," On Create View");
-
         // Enabling Up / Back navigation
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        report = (Button) findViewById(R.id.btn_report);
+        et_attach = (TextView)findViewById(R.id.insert);
+        et_capture = (TextView)findViewById(R.id.capture);
 
-        report.setOnClickListener(new View.OnClickListener() {
+        et_attach.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                emailIntent.setData(Uri.parse("mailto:clustered.concepts018@gmail.com"));
-                startActivity(emailIntent);
+            public void onClick(View v) {
+                Intent i = new Intent(
+                        Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
 
-        }
+        et_capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent capt = new Intent("android.media.action.IMAGE_CAPTURE");
+                startActivity(capt);
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -57,7 +57,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="15dp"/>
 
-            <TextView
+<!--            <TextView
                 android:id="@+id/profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 android:textColor="@color/white"
                 android:layout_below="@+id/profile_email"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp"/>-->
         </RelativeLayout>
     </LinearLayout>
 
